@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C520F422771AD5300FD97F9 /* snacks.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7C520F412771AD5300FD97F9 /* snacks.mlmodel */; };
+		7C520F442771AFC200FD97F9 /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C520F432771AFC200FD97F9 /* CGImagePropertyOrientation.swift */; };
 		7C87BFE0277175A700E7D2E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C87BFDF277175A700E7D2E7 /* AppDelegate.swift */; };
 		7C87BFE2277175A700E7D2E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C87BFE1277175A700E7D2E7 /* SceneDelegate.swift */; };
 		7C87BFE4277175A700E7D2E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C87BFE3277175A700E7D2E7 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C520F412771AD5300FD97F9 /* snacks.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = snacks.mlmodel; path = ../../snacks.mlmodel; sourceTree = "<group>"; };
+		7C520F432771AFC200FD97F9 /* CGImagePropertyOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImagePropertyOrientation.swift; sourceTree = "<group>"; };
 		7C87BFDC277175A700E7D2E7 /* onedayhackanthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onedayhackanthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C87BFDF277175A700E7D2E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C87BFE1277175A700E7D2E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,11 +80,13 @@
 				7C87BFF527717ED700E7D2E7 /* Type.swift */,
 				7C87BFE5277175A700E7D2E7 /* Main.storyboard */,
 				7C87BFFD2771864700E7D2E7 /* ImageViewController.swift */,
+				7C520F432771AFC200FD97F9 /* CGImagePropertyOrientation.swift */,
 				7C87BFF92771845A00E7D2E7 /* DetailTableViewCell.swift */,
 				7C87BFFB2771850200E7D2E7 /* DetailTableViewController.swift */,
 				7C87BFE8277175B500E7D2E7 /* Assets.xcassets */,
 				7C87BFEA277175B500E7D2E7 /* LaunchScreen.storyboard */,
 				7C87BFED277175B500E7D2E7 /* Info.plist */,
+				7C520F412771AD5300FD97F9 /* snacks.mlmodel */,
 			);
 			path = onedayhackanthon;
 			sourceTree = "<group>";
@@ -159,10 +165,12 @@
 				7C87BFF627717ED700E7D2E7 /* Type.swift in Sources */,
 				7C87BFFE2771864800E7D2E7 /* ImageViewController.swift in Sources */,
 				7C87BFF8277180BC00E7D2E7 /* TypeTableViewCell.swift in Sources */,
+				7C520F442771AFC200FD97F9 /* CGImagePropertyOrientation.swift in Sources */,
 				7C87BFFA2771845A00E7D2E7 /* DetailTableViewCell.swift in Sources */,
 				7C87BFE4277175A700E7D2E7 /* ViewController.swift in Sources */,
 				7C87BFFC2771850200E7D2E7 /* DetailTableViewController.swift in Sources */,
 				7C87BFE0277175A700E7D2E7 /* AppDelegate.swift in Sources */,
+				7C520F422771AD5300FD97F9 /* snacks.mlmodel in Sources */,
 				7C87BFE2277175A700E7D2E7 /* SceneDelegate.swift in Sources */,
 				7C87BFF427717E4500E7D2E7 /* MyClaassifyTableViewController.swift in Sources */,
 			);

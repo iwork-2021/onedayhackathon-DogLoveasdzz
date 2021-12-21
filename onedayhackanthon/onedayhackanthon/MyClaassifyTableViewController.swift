@@ -6,9 +6,30 @@
 //
 
 import UIKit
+import CoreML
+import CoreMedia
+import Vision
 
 class MyClaassifyTableViewController: UITableViewController {
     var types:[Type] = []
+    var tempResult: String = ""
+    lazy var classificationRequest: VNCoreMLRequest = {
+        do{
+            let classifier = try snacks(configuration: MLModelConfiguration())
+            
+            let model = try VNCoreMLModel(for: classifier.model)
+            let request = VNCoreMLRequest(model: model, completionHandler: {
+                [weak self] request,error in
+                self?.processObservations(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+            
+            
+        } catch {
+            fatalError("Failed to create request")
+        }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +72,29 @@ class MyClaassifyTableViewController: UITableViewController {
         }
     }
     
+    func classify(image: UIImage) {
+        let handler = VNImageRequestHandler(cgImage: image.cgImage!)
+        do{
+            try handler.perform([self.classificationRequest])
+        } catch {
+            print("Failed to perform classification: \(error)")
+        }
+    }
+    
+    func presentPhotoPicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true)
+    }
 
+    @IBAction func choosePicture(_ sender: Any) {
+        presentPhotoPicker(sourceType: .camera)
+    }
+    
+    @IBAction func takePicture(_ sender: Any) {
+        presentPhotoPicker(sourceType: .photoLibrary)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -97,4 +140,47 @@ class MyClaassifyTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension MyClaassifyTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        let image = info[.originalImage] as! UIImage
+        classify(image: image)
+        if self.tempResult != "" {
+            var flag: Bool = false
+            for type in self.types {
+                if type.name == self.tempResult {
+                    type.images.append(image.cgImage!)
+                    flag = true
+                    break
+                }
+            }
+            if flag == false {
+                let type = Type()
+                type.name = self.tempResult
+                type.images.append(image.cgImage!)
+                self.types.append(type)
+            }
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension MyClaassifyTableViewController {
+    func processObservations(for request: VNRequest, error: Error?){
+        if let results = request.results as? [VNClassificationObservation] {
+            if results.isEmpty {
+                self.tempResult = ""
+            } else {
+                let result = results[0].identifier
+                self.tempResult = result
+            }
+        } else if error != nil {
+            self.tempResult =  ""
+        } else {
+            self.tempResult = ""
+        }
+    }
 }

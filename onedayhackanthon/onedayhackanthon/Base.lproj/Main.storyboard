@@ -24,11 +24,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="207" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="图库"/>
+                                    <connections>
+                                        <action selector="choosePicture:" destination="Cyn-Ta-cJ3" eventType="touchUpInside" id="QX7-CZ-Ic4"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNw-y6-2HW">
                                     <rect key="frame" x="207" y="0.0" width="207" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="照相"/>
+                                    <connections>
+                                        <action selector="takePicture:" destination="Cyn-Ta-cJ3" eventType="touchUpInside" id="FRL-F3-sv7"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
