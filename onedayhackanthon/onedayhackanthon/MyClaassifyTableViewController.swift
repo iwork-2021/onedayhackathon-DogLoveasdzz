@@ -65,7 +65,7 @@ class MyClaassifyTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            let targetController = segue.destination as! DetailTableViewController
+            let targetController = segue.destination as! CollectionViewController
             let cell = sender as! TypeTableViewCell
             let indexPath = self.tableView.indexPath(for: cell)
             targetController.images = self.types[indexPath!.row].images
@@ -89,11 +89,11 @@ class MyClaassifyTableViewController: UITableViewController {
     }
 
     @IBAction func choosePicture(_ sender: Any) {
-        presentPhotoPicker(sourceType: .camera)
+        presentPhotoPicker(sourceType: .photoLibrary)
     }
     
     @IBAction func takePicture(_ sender: Any) {
-        presentPhotoPicker(sourceType: .photoLibrary)
+        presentPhotoPicker(sourceType: .camera)
     }
     /*
     // Override to support conditional editing of the table view.
